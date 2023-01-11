@@ -133,7 +133,7 @@ export default component$(() => {
         <Resource
           value={resource}
           onPending={() => <div>loading...</div>}
-          onRejected={(error) => <div>{error}</div>}
+          onRejected={() => <div>Error</div>}
           onResolved={(guests) => <Guests guests={guests} />}
         />
       </div>
