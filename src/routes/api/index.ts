@@ -4,9 +4,13 @@ import { v4 } from "uuid";
 import { ZodError } from "zod";
 
 import { db } from "~/server/db";
-import { createGuest, type SanitisedData, type GuestData } from "~/util/schema";
+import {
+  createGuest,
+  type SanitisedGuests,
+  type GuestData,
+} from "~/util/schema";
 
-export const onGet: RequestHandler<SanitisedData[]> = async () => {
+export const onGet: RequestHandler<SanitisedGuests[]> = async () => {
   const data = await db
     .selectFrom("GuestBook")
     .selectAll()

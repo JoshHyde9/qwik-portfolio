@@ -16,7 +16,7 @@ export type GuestData = {
   comment: string;
 };
 
-export type SanitisedData = {
+export type SanitisedGuests = {
   id: string;
   username: string;
   comment: string;

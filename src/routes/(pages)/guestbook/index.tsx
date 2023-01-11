@@ -14,15 +14,14 @@ import { ZodError } from "zod";
 
 import { FormField } from "~/components/FormField";
 
-import { createGuest, type SanitisedData, type GuestData } from "~/util/schema";
+import {
+  createGuest,
+  type SanitisedGuests,
+  type GuestData,
+} from "~/util/schema";
 
 export type Guests = {
-  guests: {
-    id: string;
-    username: string;
-    comment: string;
-    createdAt: string;
-  }[];
+  guests: SanitisedGuests[];
 };
 
 export const Guests = component$<Guests>(({ guests }) => {
@@ -58,7 +57,7 @@ export default component$(() => {
     }
   );
 
-  const resource: ResourceReturn<SanitisedData[]> = useResource$(
+  const resource: ResourceReturn<SanitisedGuests[]> = useResource$(
     async ({ cleanup, track }) => {
       const abortController = new AbortController();
       cleanup(() => abortController.abort("cleanup"));
@@ -69,7 +68,7 @@ export default component$(() => {
         "https://dainty-cupcake-cc6629.netlify.app/api/"
       );
 
-      return (await response.json()) as SanitisedData[];
+      return (await response.json()) as SanitisedGuests[];
     }
   );
 
