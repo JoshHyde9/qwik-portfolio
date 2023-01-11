@@ -48,7 +48,7 @@ type GuestData = {
 };
 
 export default component$(() => {
-  const epic = useSignal(true);
+  const fetch = useSignal(true);
   const store = useStore<GuestData>({ username: "", comment: "" });
 
   const onChange = $(
@@ -68,7 +68,7 @@ export default component$(() => {
       const abortController = new AbortController();
       cleanup(() => abortController.abort("cleanup"));
 
-      track(() => epic.value);
+      track(() => fetch.value);
 
       return guests;
     }
@@ -86,7 +86,7 @@ export default component$(() => {
 
     store.username = "";
     store.comment = "";
-    epic.value = !epic.value;
+    fetch.value = !fetch.value;
   });
 
   return (
