@@ -62,7 +62,7 @@ export default component$(() => {
       track(() => refetch.value);
 
       const response = await fetch(
-        "https://qwik-portfolio-beta.vercel.app/api/"
+        "https://dainty-cupcake-cc6629.netlify.app/api/"
       );
 
       return (await response.json()) as GuestBook[];
