@@ -3,15 +3,27 @@ import { type InsertResult } from "kysely";
 import { v4 } from "uuid";
 import { ZodError } from "zod";
 
-import { db, type GuestBook } from "~/server/db";
+import { db } from "~/server/db";
 import { createGuest, type GuestData } from "~/util/schema";
 
-export const onGet: RequestHandler<GuestBook[]> = async () => {
-  return await db
+type SanitisedData = {
+  id: string;
+  username: string;
+  comment: string;
+  createdAt: string;
+};
+
+export const onGet: RequestHandler<SanitisedData[]> = async () => {
+  const data = await db
     .selectFrom("GuestBook")
     .selectAll()
     .orderBy("createdAt", "desc")
     .execute();
+
+  return data.map((guest) => ({
+    ...guest,
+    createdAt: guest.createdAt.toString(),
+  }));
 };
 
 export const onPost: RequestHandler<InsertResult> = async ({ request }) => {
@@ -31,7 +43,6 @@ export const onPost: RequestHandler<InsertResult> = async ({ request }) => {
       id: v4(),
       username: input.username,
       comment: input.comment,
-      createdAt: new Date().toString(),
     })
     .executeTakeFirst();
 

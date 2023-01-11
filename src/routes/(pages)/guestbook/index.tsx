@@ -35,7 +35,7 @@ export const Guests = component$<Guests>(({ guests }) => {
               </h1>
             </div>
             <p class="text-xs md:text-sm text-neutral-400">
-              {dayjs(guest.createdAt).format("DD/MM/YYYY - HH:mm")}
+              {dayjs(guest.createdAt.__select__).format("DD/MM/YYYY - HH:mm")}
             </p>
           </div>
         </div>
@@ -55,11 +55,13 @@ export default component$(() => {
   );
 
   const resource: ResourceReturn<GuestBook[]> = useResource$(
-    async ({ cleanup, track }) => {
+    async ({ cleanup, track, cache }) => {
       const abortController = new AbortController();
       cleanup(() => abortController.abort("cleanup"));
 
       track(() => refetch.value);
+
+      cache(3000);
 
       const response = await fetch(
         "https://dainty-cupcake-cc6629.netlify.app/api/"
