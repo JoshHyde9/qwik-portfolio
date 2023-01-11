@@ -65,10 +65,11 @@ export default component$(() => {
       track(() => refetch.value);
 
       const response = await fetch(
-        "https://dainty-cupcake-cc6629.netlify.app/api/"
+        "https://dainty-cupcake-cc6629.netlify.app/api/",
+        { signal: abortController.signal }
       );
 
-      return (await response.json()) as SanitisedGuests[];
+      return await response.json();
     }
   );
 
