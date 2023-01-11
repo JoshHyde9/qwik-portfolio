@@ -61,7 +61,9 @@ export default component$(() => {
 
       track(() => refetch.value);
 
-      const response = await fetch("http://localhost:3000/api/");
+      const response = await fetch(
+        "https://qwik-portfolio-beta.vercel.app/api/"
+      );
 
       return (await response.json()) as GuestBook[];
     }
