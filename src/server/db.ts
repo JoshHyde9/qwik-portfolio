@@ -1,15 +1,13 @@
 import { Kysely, type Generated } from "kysely";
 import { PlanetScaleDialect } from "kysely-planetscale";
 
-export type GuestBook = {
-  id: string;
-  username: string;
-  comment: string;
-  createdAt: Generated<Date>;
-};
-
 type Database = {
-  GuestBook: GuestBook;
+  GuestBook: {
+    id: string;
+    username: string;
+    comment: string;
+    createdAt: Generated<Date>;
+  };
 };
 
 export const db = new Kysely<Database>({

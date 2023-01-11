@@ -15,3 +15,10 @@ export type GuestData = {
   username: string;
   comment: string;
 };
+
+export type SanitisedData = {
+  id: string;
+  username: string;
+  comment: string;
+  createdAt: string;
+};

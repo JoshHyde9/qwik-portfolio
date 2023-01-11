@@ -14,11 +14,15 @@ import { ZodError } from "zod";
 
 import { FormField } from "~/components/FormField";
 
-import { type GuestBook } from "~/server/db";
-import { createGuest, type GuestData } from "~/util/schema";
+import { createGuest, type SanitisedData, type GuestData } from "~/util/schema";
 
 export type Guests = {
-  guests: GuestBook[];
+  guests: {
+    id: string;
+    username: string;
+    comment: string;
+    createdAt: string;
+  }[];
 };
 
 export const Guests = component$<Guests>(({ guests }) => {
@@ -35,7 +39,7 @@ export const Guests = component$<Guests>(({ guests }) => {
               </h1>
             </div>
             <p class="text-xs md:text-sm text-neutral-400">
-              {dayjs(guest.createdAt.__select__).format("DD/MM/YYYY - HH:mm")}
+              {dayjs(guest.createdAt).format("DD/MM/YYYY - HH:mm")}
             </p>
           </div>
         </div>
@@ -54,20 +58,18 @@ export default component$(() => {
     }
   );
 
-  const resource: ResourceReturn<GuestBook[]> = useResource$(
-    async ({ cleanup, track, cache }) => {
+  const resource: ResourceReturn<SanitisedData[]> = useResource$(
+    async ({ cleanup, track }) => {
       const abortController = new AbortController();
       cleanup(() => abortController.abort("cleanup"));
 
       track(() => refetch.value);
 
-      cache(3000);
-
       const response = await fetch(
         "https://dainty-cupcake-cc6629.netlify.app/api/"
       );
 
-      return (await response.json()) as GuestBook[];
+      return (await response.json()) as SanitisedData[];
     }
   );
 

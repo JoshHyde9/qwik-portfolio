@@ -4,14 +4,7 @@ import { v4 } from "uuid";
 import { ZodError } from "zod";
 
 import { db } from "~/server/db";
-import { createGuest, type GuestData } from "~/util/schema";
-
-type SanitisedData = {
-  id: string;
-  username: string;
-  comment: string;
-  createdAt: string;
-};
+import { createGuest, type SanitisedData, type GuestData } from "~/util/schema";
 
 export const onGet: RequestHandler<SanitisedData[]> = async () => {
   const data = await db
