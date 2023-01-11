@@ -1,6 +1,12 @@
-import type { GuestBook } from "@prisma/client/edge";
 import { Kysely } from "kysely";
 import { PlanetScaleDialect } from "kysely-planetscale";
+
+export type GuestBook = {
+  id?: string;
+  username: string;
+  comment: string;
+  createdAt?: Date;
+};
 
 type Database = {
   GuestBook: GuestBook;

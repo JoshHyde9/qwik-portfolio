@@ -5,7 +5,7 @@ export default component$(() => {
   return (
     <>
       <Navbar />
-      <section>
+      <section class="max-w-prose mx-auto">
         <Slot />
       </section>
     </>
