@@ -2,10 +2,10 @@ import { Kysely } from "kysely";
 import { PlanetScaleDialect } from "kysely-planetscale";
 
 export type GuestBook = {
-  id?: string;
+  id: string;
   username: string;
   comment: string;
-  createdAt?: Date;
+  createdAt: string;
 };
 
 type Database = {

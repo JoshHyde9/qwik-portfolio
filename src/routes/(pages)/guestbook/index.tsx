@@ -10,10 +10,12 @@ import {
 } from "@builder.io/qwik";
 import { type DocumentHead } from "@builder.io/qwik-city";
 import dayjs from "dayjs";
-import { FormField } from "~/components/FormField";
-import { v4 } from "uuid";
+import { ZodError } from "zod";
 
-import { db, type GuestBook } from "~/server/db";
+import { FormField } from "~/components/FormField";
+
+import { type GuestBook } from "~/server/db";
+import { createGuest, type GuestData } from "~/util/schema";
 
 export type Guests = {
   guests: GuestBook[];
@@ -42,13 +44,8 @@ export const Guests = component$<Guests>(({ guests }) => {
   );
 });
 
-type GuestData = {
-  username: string;
-  comment: string;
-};
-
 export default component$(() => {
-  const fetch = useSignal(true);
+  const refetch = useSignal(false);
   const store = useStore<GuestData>({ username: "", comment: "" });
 
   const onChange = $(
@@ -59,34 +56,34 @@ export default component$(() => {
 
   const resource: ResourceReturn<GuestBook[]> = useResource$(
     async ({ cleanup, track }) => {
-      const guests = await db
-        .selectFrom("GuestBook")
-        .selectAll()
-        .orderBy("createdAt", "desc")
-        .execute();
-
       const abortController = new AbortController();
       cleanup(() => abortController.abort("cleanup"));
 
-      track(() => fetch.value);
+      track(() => refetch.value);
 
-      return guests;
+      const response = await fetch("http://localhost:3000/api/");
+
+      return (await response.json()) as GuestBook[];
     }
   );
 
   const onSubmit = $(async () => {
-    await db
-      .insertInto("GuestBook")
-      .values({
-        id: v4(),
-        username: store.username,
-        comment: store.comment,
-      })
-      .executeTakeFirstOrThrow();
+    try {
+      createGuest.parse(store);
+    } catch (err) {
+      if (err instanceof ZodError) {
+        return console.log(err.issues);
+      }
+    }
+
+    await fetch("/api/", {
+      method: "POST",
+      body: JSON.stringify(store),
+    });
 
     store.username = "";
     store.comment = "";
-    fetch.value = !fetch.value;
+    refetch.value = !refetch.value;
   });
 
   return (
