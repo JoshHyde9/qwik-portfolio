@@ -3,7 +3,7 @@ import { z } from "zod";
 export const createGuest = z.object({
   username: z
     .string()
-    .min(1, { message: "Username must not be empty" })
+    .min(1, { message: "Name must not be empty" })
     .max(50, { message: "Username has to be 50 characters or less." }),
   comment: z
     .string()

@@ -1,28 +1,70 @@
 import {
   component$,
-  Resource,
-  useStore,
-  $,
-  useResource$,
-  type QwikChangeEvent,
-  type ResourceReturn,
   useSignal,
+  useStore,
+  useTask$,
+  $,
+  type QwikChangeEvent,
 } from "@builder.io/qwik";
-import { type DocumentHead } from "@builder.io/qwik-city";
+import {
+  type DocumentHead,
+  loader$,
+  action$,
+  Form,
+} from "@builder.io/qwik-city";
 import dayjs from "dayjs";
+import { v4 } from "uuid";
 import { ZodError } from "zod";
 
 import { FormField } from "~/components/FormField";
+import { db } from "~/server/db";
 
 import {
   createGuest,
-  type SanitisedGuests,
   type GuestData,
+  type SanitisedGuests,
 } from "~/util/schema";
 
 export type Guests = {
   guests: SanitisedGuests[];
 };
+
+export const createComment = action$(async (form) => {
+  const username = form.get("username") as string;
+  const comment = form.get("comment") as string;
+
+  try {
+    createGuest.parse({ username, comment });
+  } catch (err) {
+    if (err instanceof ZodError) {
+      return err.issues[0].message;
+    }
+  }
+
+  await db
+    .insertInto("GuestBook")
+    .values({
+      id: v4(),
+      username: username,
+      comment: comment,
+    })
+    .executeTakeFirst();
+
+  return { success: true, form };
+});
+
+export const getAllGuests = loader$(async () => {
+  const data = await db
+    .selectFrom("GuestBook")
+    .selectAll()
+    .orderBy("createdAt", "desc")
+    .execute();
+
+  return data.map((guest) => ({
+    ...guest,
+    createdAt: guest.createdAt.toString(),
+  }));
+});
 
 export const Guests = component$<Guests>(({ guests }) => {
   return (
@@ -48,49 +90,27 @@ export const Guests = component$<Guests>(({ guests }) => {
 });
 
 export default component$(() => {
-  const refetch = useSignal(false);
   const store = useStore<GuestData>({ username: "", comment: "" });
+  const error = useSignal("");
+  const create = createComment.use();
+  const guests = getAllGuests.use();
+
+  useTask$(({ track }) => {
+    track(() => create.value);
+    if (typeof create.value === "string") {
+      error.value = create.value;
+    } else {
+      store.comment = "";
+      store.username = "";
+      error.value = "";
+    }
+  });
 
   const onChange = $(
     (e: QwikChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       store[e.target.name as keyof GuestData] = e.target.value;
     }
   );
-
-  const resource: ResourceReturn<SanitisedGuests[]> = useResource$(
-    async ({ cleanup, track }) => {
-      const abortController = new AbortController();
-      cleanup(() => abortController.abort("cleanup"));
-
-      track(() => refetch.value);
-
-      const response = await fetch(
-        "https://dainty-cupcake-cc6629.netlify.app/api/",
-        { signal: abortController.signal }
-      );
-
-      return await response.json();
-    }
-  );
-
-  const onSubmit = $(async () => {
-    try {
-      createGuest.parse(store);
-    } catch (err) {
-      if (err instanceof ZodError) {
-        return console.log(err.issues);
-      }
-    }
-
-    await fetch("/api/", {
-      method: "POST",
-      body: JSON.stringify(store),
-    });
-
-    store.username = "";
-    store.comment = "";
-    refetch.value = !refetch.value;
-  });
 
   return (
     <>
@@ -101,7 +121,7 @@ export default component$(() => {
         </p>
       </div>
       <div class="my-5">
-        <form class="flex flex-col" preventdefault:submit onSubmit$={onSubmit}>
+        <Form class="flex flex-col" action={create}>
           <div class="flex flex-col my-4">
             <FormField
               element="input"
@@ -113,7 +133,7 @@ export default component$(() => {
               onChange={onChange}
             />
           </div>
-          <div class="flex flex-col my-4">
+          <div class="flex flex-col mt-4">
             <FormField
               element="textarea"
               label="Comment:"
@@ -125,21 +145,22 @@ export default component$(() => {
             />
           </div>
 
+          <div class="h-5 my-2">
+            <p class={`italic text-sm ${!error.value ? "hidden" : ""}`}>
+              {error.value}
+            </p>
+          </div>
+
           <button
             type="submit"
             class="w-full flex justify-center bg-purple-500 py-2 rounded-md duration-300 text-white hover:bg-purple-400 disabled:cursor-not-allowed"
           >
             Comment
           </button>
-        </form>
+        </Form>
       </div>
       <div>
-        <Resource
-          value={resource}
-          onPending={() => <div>loading...</div>}
-          onRejected={() => <div>Error</div>}
-          onResolved={(guests) => <Guests guests={guests} />}
-        />
+        <Guests guests={guests.value} />
       </div>
     </>
   );
