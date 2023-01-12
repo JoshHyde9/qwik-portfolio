@@ -17,6 +17,9 @@ import {
 import { manifest } from "@qwik-client-manifest";
 import Root from "./root";
 
+// TODO: Remove when Qwik City is updated
+(String as any).prototype.toUppercase = String.prototype.toUpperCase;
+
 export default function (opts: RenderToStreamOptions) {
   return renderToStream(<Root />, {
     manifest,
