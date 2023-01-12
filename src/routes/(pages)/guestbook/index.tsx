@@ -146,7 +146,11 @@ export default component$(() => {
           </div>
 
           <div class="h-5 my-2">
-            <p class={`italic text-sm ${!error.value ? "hidden" : ""}`}>
+            <p
+              class={`italic text-sm text-purple-300 ${
+                !error.value ? "hidden" : ""
+              }`}
+            >
               {error.value}
             </p>
           </div>
