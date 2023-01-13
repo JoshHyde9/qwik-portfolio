@@ -22,7 +22,12 @@ export const ProjectCard = component$<ProjectCardProps>(
             </div>
           </div>
           <div class="w-full">
-            <img class="rounded-b-lg w-full h-auto" src={imageURL} alt={name} />
+            <img
+              class="rounded-b-lg w-full h-auto"
+              src={imageURL}
+              alt={name}
+              loading="eager"
+            />
           </div>
           <div class="flex flex-col items-center lg:gap-2 lg:pl-2 lg:h-60 lg:w-40 lg:justify-evenly">
             <a
