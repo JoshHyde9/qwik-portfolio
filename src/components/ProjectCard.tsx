@@ -1,6 +1,6 @@
 import { component$ } from "@builder.io/qwik";
 
-import { Icon } from "./Icon/Icon";
+import { Icon } from "./icon/Icon";
 
 type ProjectCardProps = {
   techStack: string;

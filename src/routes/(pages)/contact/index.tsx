@@ -10,7 +10,7 @@ import { type DocumentHead, action$, Form } from "@builder.io/qwik-city";
 import { ZodError } from "zod";
 
 import { FormField } from "~/components/FormField";
-import { IconLink } from "~/components/Icon/IconLink";
+import { IconLink } from "~/components/icon/IconLink";
 
 import { type EmailData, sendEmailSchema } from "~/util/schema";
 import { sendEmail } from "~/util/sendEmail";
