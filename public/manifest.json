@@ -1,9 +1,9 @@
 {
   "$schema": "https://json.schemastore.org/web-manifest-combined.json",
-  "name": "qwik-project-name",
-  "short_name": "Welcome to Qwik",
+  "name": "josh-hyde-portfolio",
+  "short_name": "Josh Hyde's Portfolio",
   "start_url": ".",
   "display": "standalone",
-  "background_color": "#fff",
-  "description": "A Qwik project app."
+  "background_color": "#171717",
+  "description": "A handy dandy website for displaying my accomplishments, skills, experiences, and attributes."
 }
