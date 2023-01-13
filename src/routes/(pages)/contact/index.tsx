@@ -152,7 +152,7 @@ export default component$(() => {
 
           <button
             type="submit"
-            class="w-full flex justify-center bg-purple-500 py-2 rounded-md duration-300 text-white hover:bg-purple-400 disabled:cursor-not-allowed"
+            class="w-full flex justify-center bg-purple-500 font-bold py-2 rounded-md duration-300 text-white hover:bg-purple-400 disabled:cursor-not-allowed"
           >
             Send email
           </button>
