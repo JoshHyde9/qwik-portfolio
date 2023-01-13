@@ -113,7 +113,7 @@ export default component$(() => {
   );
 
   return (
-    <>
+    <div class="max-w-prose mx-auto">
       <div>
         <h1 class="text-4xl text-purple-300">Guestbook</h1>
         <p>
@@ -166,7 +166,7 @@ export default component$(() => {
       <div>
         <Guests guests={guests.value} />
       </div>
-    </>
+    </div>
   );
 });
 
