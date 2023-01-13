@@ -1,9 +1,11 @@
-export const sendEmail = async (
-  name: string,
-  email: string,
-  subject: string,
-  message: string
-) => {
+import { type EmailData } from "./schema";
+
+export const sendEmail = async ({
+  name,
+  email,
+  subject,
+  message,
+}: EmailData) => {
   const response = await fetch(
     "https://api.sparkpost.com/api/v1/transmissions/",
     {

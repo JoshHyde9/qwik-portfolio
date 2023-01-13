@@ -29,7 +29,7 @@ export const sendEmailAction = action$(async (form) => {
     }
   }
 
-  return await sendEmail(name, email, subject, message);
+  return await sendEmail({ name, email, subject, message });
 });
 
 export default component$(() => {
