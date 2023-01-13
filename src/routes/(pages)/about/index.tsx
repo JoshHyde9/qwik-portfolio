@@ -3,7 +3,7 @@ import { KnowledgeRow } from "~/components/KnowledgeRow";
 
 export default component$(() => {
   return (
-    <section class="max-w-prose mx-auto">
+    <section class="max-w-prose mx-auto mt-10">
       <h1 class="text-4xl text-purple-300">About me</h1>
       <p>
         For those who may not know, my name is Josh, but people on the internet

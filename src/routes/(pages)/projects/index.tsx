@@ -5,7 +5,10 @@ import { ProjectCard } from "~/components/ProjectCard";
 export default component$(() => {
   return (
     <div class="container mx-auto max-w-screen-lg flex flex-col gap-10 my-10">
-      <h1 class="text-purple-300 text-4xl">Things that I have made</h1>
+      <div class="px-2 lg:px-0 lg:flex lg:justify-around">
+        <h1 class="text-purple-300 text-4xl">Things that I have made</h1>
+        <div></div>
+      </div>
       <ProjectCard
         techStack="Next.js / tRPC / Prisma / TypeScript"
         githubLink="https://github.com/JoshHyde9/scroggin"

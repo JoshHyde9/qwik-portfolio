@@ -62,7 +62,7 @@ export default component$(() => {
   );
 
   return (
-    <div class="max-w-prose mx-auto">
+    <div class="max-w-prose mx-auto mt-10">
       <div>
         <h1 class="text-4xl text-purple-300">Contact me</h1>
         <p>
