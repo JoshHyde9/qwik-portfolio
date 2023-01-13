@@ -22,3 +22,17 @@ export type SanitisedGuests = {
   comment: string;
   createdAt: string;
 };
+
+export const sendEmailSchema = z.object({
+  name: z.string().min(1, { message: "Name must not be empty" }),
+  email: z.string().email(),
+  subject: z.string().min(1, { message: "Subject must not be empty" }),
+  message: z.string().min(1, { message: "Message must not be empty" }),
+});
+
+export type EmailData = {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+};
