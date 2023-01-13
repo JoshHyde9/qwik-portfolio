@@ -112,7 +112,7 @@ export default component$(() => {
               type="email"
               label="Contact Email:"
               name="email"
-              placeholder="john@doe.com"
+              placeholder="jim@penman.com"
               value={store.email}
               onChange={onChange}
             />

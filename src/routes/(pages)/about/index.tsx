@@ -29,7 +29,7 @@ export default component$(() => {
         </a>
         .
       </p>
-      <h2 class="text-3xl text-purple-300 mt-4">My abilities</h2>
+      <h2 class="text-3xl text-purple-300 mt-4">Tech I like</h2>
       <div class="container mx-auto">
         <KnowledgeRow libraries={["TypeScript", "Qwik", "Next.js", "tRPC"]} />
         <KnowledgeRow
@@ -40,7 +40,7 @@ export default component$(() => {
         />
         <KnowledgeRow libraries={["TypeORM", "Prisma", "Docker", "GraphQL"]} />
       </div>
-      <h2 class="text-3xl text-purple-300 mt-4">Do I go outside?</h2>
+      <h2 class="text-3xl text-purple-300 mt-4">Do you go outside?</h2>
       <p class="mb-1">
         Believe it or not, I do! I am a fiend for anything on wheels, especially
         bikes. <br /> When I was camping as a little kid, I saw a bloke send
