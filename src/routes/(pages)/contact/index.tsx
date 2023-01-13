@@ -163,11 +163,12 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "Guestbook",
+  title: "Contact Me",
   meta: [
     {
       name: "description",
-      content: "Send a cute, little message now that you have found this page",
+      content:
+        "The only page on the internet that has the best resources for ways to contact me",
     },
   ],
 };
