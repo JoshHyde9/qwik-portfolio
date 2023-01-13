@@ -7,18 +7,17 @@ export default component$(() => {
       <h1 class="text-4xl text-purple-300">About me</h1>
       <p>
         For those who may not know, my name is Josh, but people on the internet
-        call me Jim. I am 20 years old and was born in Echuca, Victoria but now
-        residing on the Mornington Peninsula. I am a passionate developer and
-        have a big emphasis on producing quality products.
+        call me Jim. I am 21 years old and was born in Echuca, Victoria but now
+        residing in Melbourne. I am a passionate developer and have a big
+        emphasis on producing quality products.
       </p>
       &nbsp;
       <p>
-        I am a year 12 graduate and have enrolled myself into HarvardX's
-        "Computer Science for Web Programming" and have completed the Computer
-        Science section of the course and learnt a lot. I am glad to be able to
-        use what I have learned and put that knowledge into my projects. If
-        you're interested in working together or want to ask a question, please
-        do not hesitate to{" "}
+        I am a year 12 graduate and have successfully completed HarvardX's
+        "CS50's Web Programming with Python and JavaScript". I am glad to be
+        able to use what I have learned and put that knowledge into my projects.
+        If you're interested in working together or want to ask a question,
+        please do not hesitate to{" "}
         <a
           class="transition ease-in-out duration-300 text-purple-500 hover:text-purple-300"
           href="/contact"
