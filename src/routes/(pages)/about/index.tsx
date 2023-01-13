@@ -23,6 +23,7 @@ export default component$(() => {
         <a
           class="transition ease-in-out duration-300 text-purple-500 hover:text-purple-300"
           href="/contact"
+          aria-label="Read more about how to contact me"
         >
           contact me
         </a>
