@@ -5,9 +5,8 @@
 @tailwind utilities;
 
 body {
-  @apply bg-neutral-900 text-slate-100 w-screen overflow-x-hidden;
+  @apply bg-neutral-900 text-slate-100 leading-normal text-lg w-screen overflow-x-hidden;
   font-family: "Lato", sans-serif;
-  font-size: 1.06rem;
 }
 
 h1,

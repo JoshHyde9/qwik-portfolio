@@ -16,7 +16,7 @@ export const ProjectCard = component$<ProjectCardProps>(
       <div class="lg:bg-gradient-to-t lg:from-stone-900 rounded-md mx-auto text-center p-3 pb-0">
         <h1 class="text-4xl font-semibold mb-2 lg:ml-10">{name}</h1>
         <div class="flex flex-col lg:flex-row lg:items-center lg:max-w-screen-lg">
-          <div class="mb-2 lg:relative lg:w-52 lg:-rotate-90">
+          <div class="mb-2 lg:relative lg:w-56 lg:-rotate-90">
             <div class="lg:absolute lg:w-full">
               <h2 class="w-full h-full">{techStack}</h2>
             </div>
@@ -36,7 +36,7 @@ export const ProjectCard = component$<ProjectCardProps>(
               target="_blank"
               class="fancy-button overflow-hidden inline-block lg:my-2"
             >
-              <span>Have a geez</span>
+              <span class="text-base">Have a geez</span>
             </a>
             <a href={githubLink} rel="noreferrer" target="_blank">
               <Icon
