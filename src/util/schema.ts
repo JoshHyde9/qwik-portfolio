@@ -11,10 +11,7 @@ export const createGuest = z.object({
     .max(256, { message: "Comment can not be more than 256 characters" }),
 });
 
-export type GuestData = {
-  username: string;
-  comment: string;
-};
+export type CreateGuest = z.infer<typeof createGuest>;
 
 export type SanitisedGuests = {
   id: string;
@@ -30,9 +27,4 @@ export const sendEmailSchema = z.object({
   message: z.string().min(1, { message: "Message must not be empty" }),
 });
 
-export type EmailData = {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
-};
+export type EmailData = z.infer<typeof sendEmailSchema>;

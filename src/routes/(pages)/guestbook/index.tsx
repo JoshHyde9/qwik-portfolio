@@ -21,7 +21,7 @@ import { db } from "~/server/db";
 
 import {
   createGuest,
-  type GuestData,
+  type CreateGuest,
   type SanitisedGuests,
 } from "~/util/schema";
 
@@ -90,7 +90,7 @@ export const Guests = component$<Guests>(({ guests }) => {
 });
 
 export default component$(() => {
-  const store = useStore<GuestData>({ username: "", comment: "" });
+  const store = useStore<CreateGuest>({ username: "", comment: "" });
   const error = useSignal("");
   const create = createComment.use();
   const guests = getAllGuests.use();
@@ -108,7 +108,7 @@ export default component$(() => {
 
   const onChange = $(
     (e: QwikChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      store[e.target.name as keyof GuestData] = e.target.value;
+      store[e.target.name as keyof CreateGuest] = e.target.value;
     }
   );
 
