@@ -7,19 +7,19 @@ export default component$(() => {
   return (
     <section class="max-w-prose mx-auto mt-10">
       <h1 class="text-4xl text-purple-300">About me</h1>
-      <p>
+      <p class="mb-2">
         For those who may not know, my name is Josh, but people on the internet
         call me Jim. I am 21 years old and was born in Echuca, Victoria but now
         residing in Melbourne. I am a passionate developer and have a big
         emphasis on producing quality products.
       </p>
-      &nbsp;
+
       <p>
         I am a year 12 graduate and have successfully completed HarvardX's
-        "CS50's Web Programming with Python and JavaScript". I am glad to be
-        able to use what I have learned and put that knowledge into my projects.
-        If you're interested in working together or want to ask a question,
-        please do not hesitate to{" "}
+        "CS50's Web Programming with Python and JavaScript". I found what I had
+        learned extremely valuable and gave me a confidence boost in being able
+        to contribute to more OSS. If you're interested in working together or
+        want to ask a question, please do not hesitate to{" "}
         <a
           class="transition ease-in-out duration-300 text-purple-500 hover:text-purple-300"
           href="/contact"
@@ -31,18 +31,14 @@ export default component$(() => {
       </p>
       <h2 class="text-3xl text-purple-300 mt-4">My abilities</h2>
       <div class="container mx-auto">
+        <KnowledgeRow libraries={["TypeScript", "Qwik", "Next.js", "tRPC"]} />
         <KnowledgeRow
-          libraries={["TypeScript", "GraphQL", "Next.js", "Node.js"]}
+          libraries={["Node.js", "React.js", "JavaScript", "Express.js"]}
         />
         <KnowledgeRow
-          libraries={["tRPC", "React.js", "JavaScript", "Express.js"]}
+          libraries={["MySQL", "Firebase", "PostgreSQL", "Redis"]}
         />
-        <KnowledgeRow
-          libraries={["MongoDB", "Firebase", "PostgreSQL", "Redis"]}
-        />
-        <KnowledgeRow
-          libraries={["TypeORM", "Prisma", "TailwindCSS", "Qwik"]}
-        />
+        <KnowledgeRow libraries={["TypeORM", "Prisma", "Docker", "GraphQL"]} />
       </div>
       <h2 class="text-3xl text-purple-300 mt-4">Do I go outside?</h2>
       <p class="mb-1">
@@ -51,6 +47,27 @@ export default component$(() => {
         himself down a mountain on a bike and I thought "That looks like fun!"
         and sure enough I was hooked and do not plan on giving up on it any time
         soon.
+      </p>
+      <h2 class="text-3xl text-purple-300 mt-4">
+        What made you interested in programming?
+      </h2>
+      <p class="mb-1">
+        I was <span class="italic">that kid</span> at school and still am (just
+        not at school because I am not a nneeerrrrrddd.) Ever since I got my
+        grubby, little hands on a computer, I was fascinated with how it all
+        works, like how does keystoke on a keyboard turn into a letter
+        displaying on a screen? Magic? Nah that can't be it. So... trying to
+        debunk magic is what made me interested.
+      </p>
+      <h2 class="text-3xl text-purple-300 mt-4">
+        What made you choose web dev?
+      </h2>
+      <p class="mb-1">
+        I have tried hardware, game (also game modding), desktop and malicious
+        programming. What made web dev stick out to the rest of the bunch is
+        that there are some <span class="italic">hot garbage</span> websites /
+        web apps out there and I believe that I can make a very small difference
+        to said hot garbage.
       </p>
     </section>
   );
