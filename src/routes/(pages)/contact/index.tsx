@@ -92,7 +92,7 @@ export default component$(() => {
           url="https://github.com/JoshHyde9"
         />
       </div>
-      <div class="my-5">
+      <div class="mt-5 pb-24">
         <p>Or you can send me a good ol' fashioned email if you want.</p>
         <Form class="flex flex-col" action={sendEmail}>
           <div class="flex flex-col my-4">
