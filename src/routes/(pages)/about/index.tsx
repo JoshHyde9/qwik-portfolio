@@ -59,6 +59,10 @@ export const head: DocumentHead = {
   title: "About Me",
   meta: [
     {
+      name: "og:title",
+      content: "About Me",
+    },
+    {
       name: "description",
       content:
         "Want to learn more about me as a person or my skills? Funnily enough, this page is the best way to found that out.",

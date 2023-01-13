@@ -166,6 +166,10 @@ export const head: DocumentHead = {
   title: "Contact Me",
   meta: [
     {
+      name: "og:title",
+      content: "Contact Me",
+    },
+    {
       name: "description",
       content:
         "The only page on the internet that has the best resources for ways to contact me.",

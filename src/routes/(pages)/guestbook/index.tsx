@@ -174,6 +174,10 @@ export const head: DocumentHead = {
   title: "Guestbook",
   meta: [
     {
+      name: "og:title",
+      content: "Guestbook",
+    },
+    {
       name: "description",
       content: "Send a cute, little message now that you have found this page.",
     },
