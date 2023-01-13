@@ -1,4 +1,6 @@
 import { component$ } from "@builder.io/qwik";
+import { type DocumentHead } from "@builder.io/qwik-city";
+
 import { KnowledgeRow } from "~/components/KnowledgeRow";
 
 export default component$(() => {
@@ -52,3 +54,36 @@ export default component$(() => {
     </section>
   );
 });
+
+export const head: DocumentHead = {
+  title: "About Me",
+  meta: [
+    {
+      name: "description",
+      content:
+        "Want to learn more about me as a person or my skills? Funnily enough, this page is the best way to found that out.",
+    },
+    {
+      name: "og:description",
+      content:
+        "A handy dandy website for displaying my accomplishments, skills, experiences, and attributes.",
+    },
+    {
+      name: "url",
+      content: "https://dev.joshhyde.me/about",
+    },
+    {
+      name: "og:url",
+      content: "https://dev.joshhyde.me/about",
+    },
+    {
+      name: "twitter:title",
+      content: "About Me",
+    },
+    {
+      name: "twitter:description",
+      content:
+        "A handy dandy website for displaying my accomplishments, skills, experiences, and attributes.",
+    },
+  ],
+};

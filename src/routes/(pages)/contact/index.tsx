@@ -168,7 +168,29 @@ export const head: DocumentHead = {
     {
       name: "description",
       content:
-        "The only page on the internet that has the best resources for ways to contact me",
+        "The only page on the internet that has the best resources for ways to contact me.",
+    },
+    {
+      name: "og:description",
+      content:
+        "The only page on the internet that has the best resources for ways to contact me.",
+    },
+    {
+      name: "url",
+      content: "https://dev.joshhyde.me/contact",
+    },
+    {
+      name: "og:url",
+      content: "https://dev.joshhyde.me/contact",
+    },
+    {
+      name: "twitter:title",
+      content: "Contact Me",
+    },
+    {
+      name: "twitter:description",
+      content:
+        "The only page on the internet that has the best resources for ways to contact me.",
     },
   ],
 };

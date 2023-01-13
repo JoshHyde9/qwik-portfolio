@@ -1,4 +1,5 @@
 import { component$ } from "@builder.io/qwik";
+import { type DocumentHead } from "@builder.io/qwik-city";
 
 import { ProjectCard } from "~/components/ProjectCard";
 
@@ -51,3 +52,33 @@ export default component$(() => {
     </div>
   );
 });
+
+export const head: DocumentHead = {
+  title: "Projects",
+  meta: [
+    {
+      name: "description",
+      content: "A list of things I have created and am relatively proud of.",
+    },
+    {
+      name: "og:description",
+      content: "A list of things I have created and am relatively proud of.",
+    },
+    {
+      name: "url",
+      content: "https://dev.joshhyde.me/projects",
+    },
+    {
+      name: "og:url",
+      content: "https://dev.joshhyde.me/projects",
+    },
+    {
+      name: "twitter:title",
+      content: "Projects",
+    },
+    {
+      name: "twitter:description",
+      content: "A list of things I have created and am relatively proud of.",
+    },
+  ],
+};

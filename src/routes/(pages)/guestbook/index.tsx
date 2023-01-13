@@ -175,7 +175,27 @@ export const head: DocumentHead = {
   meta: [
     {
       name: "description",
-      content: "Send a cute, little message now that you have found this page",
+      content: "Send a cute, little message now that you have found this page.",
+    },
+    {
+      name: "og:description",
+      content: "Send a cute, little message now that you have found this page.",
+    },
+    {
+      name: "url",
+      content: "https://dev.joshhyde.me/guestbook",
+    },
+    {
+      name: "og:url",
+      content: "https://dev.joshhyde.me/guestbook",
+    },
+    {
+      name: "twitter:title",
+      content: "Guestbook",
+    },
+    {
+      name: "twitter:description",
+      content: "Send a cute, little message now that you have found this page.",
     },
   ],
 };
