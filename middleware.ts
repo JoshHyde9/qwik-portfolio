@@ -18,5 +18,5 @@ export default async function middleware(
   const ip = ipAddress(request) ?? "127.0.0.1";
   const { success } = await ratelimit.limit(ip);
 
-  return success ? next() : rewrite(new URL("/api/blocked", request.url));
+  return success ? next() : rewrite(new URL("/blocked", request.url));
 }
