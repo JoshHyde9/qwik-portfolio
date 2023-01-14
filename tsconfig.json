@@ -21,6 +21,6 @@
       "~/*": ["./src/*"]
     }
   },
-  "files": ["./.eslintrc.cjs"],
-  "include": ["src"]
+  "files": ["./.eslintrc.cjs", "./middleware.ts"],
+  "include": ["src", "./middleware.ts"]
 }
