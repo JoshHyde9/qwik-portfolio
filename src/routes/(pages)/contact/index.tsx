@@ -16,6 +16,7 @@ import { ZodError } from "zod";
 
 import { FormField } from "~/components/FormField";
 import { IconLink } from "~/components/icon/IconLink";
+import { ipRateLimit } from "~/lib/ipRateLimit";
 
 import { type EmailData, sendEmailSchema } from "~/util/schema";
 import { sendEmail } from "~/util/sendEmail";
@@ -41,7 +42,9 @@ export const rateLimitAciton = loader$(async ({ request }) => {
   // @ts-ignore
   const res = await ipRateLimit(request);
   // If the status is not 200 then it has been rate limited.
-  if (res.status !== 200) return res;
+  if (res.status !== 200) {
+    res;
+  }
 });
 
 export default component$(() => {
