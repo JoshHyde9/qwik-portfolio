@@ -3,8 +3,8 @@ import { Redis } from "@upstash/redis";
 import { ipAddress } from "@vercel/edge";
 
 const redis = new Redis({
-  url: import.meta.env.VITE_UPSTASH_REDIS_REST_URL,
-  token: import.meta.env.VITE_UPSTASH_REDIS_REST_TOKEN,
+  url: import.meta.env.UPSTASH_REDIS_REST_URL,
+  token: import.meta.env.PSTASH_REDIS_REST_TOKEN,
 });
 
 const ratelimit = new Ratelimit({
