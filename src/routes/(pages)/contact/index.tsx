@@ -6,7 +6,12 @@ import {
   $,
   type QwikChangeEvent,
 } from "@builder.io/qwik";
-import { type DocumentHead, action$, Form } from "@builder.io/qwik-city";
+import {
+  type DocumentHead,
+  action$,
+  Form,
+  loader$,
+} from "@builder.io/qwik-city";
 import { ZodError } from "zod";
 
 import { FormField } from "~/components/FormField";
@@ -32,6 +37,13 @@ export const sendEmailAction = action$(async (form) => {
   return await sendEmail({ name, email, subject, message });
 });
 
+export const rateLimitAciton = loader$(async ({ request }) => {
+  // @ts-ignore
+  const res = await ipRateLimit(request);
+  // If the status is not 200 then it has been rate limited.
+  if (res.status !== 200) return res;
+});
+
 export default component$(() => {
   const store = useStore<EmailData>({
     name: "",
@@ -41,6 +53,7 @@ export default component$(() => {
   });
   const error = useSignal("");
   const sendEmail = sendEmailAction.use();
+  rateLimitAciton.use();
 
   useTask$(({ track }) => {
     track(() => sendEmail.value);

@@ -17,6 +17,7 @@ import { v4 } from "uuid";
 import { ZodError } from "zod";
 
 import { FormField } from "~/components/FormField";
+import { ipRateLimit } from "~/lib/ipRateLimit";
 import { db } from "~/server/db";
 
 import {
@@ -28,6 +29,13 @@ import {
 export type Guests = {
   guests: SanitisedGuests[];
 };
+
+export const rateLimitAciton = loader$(async ({ request }) => {
+  // @ts-ignore
+  const res = await ipRateLimit(request);
+  // If the status is not 200 then it has been rate limited.
+  if (res.status !== 200) return res;
+});
 
 export const createComment = action$(async (form) => {
   const username = form.get("username") as string;
@@ -94,6 +102,7 @@ export default component$(() => {
   const error = useSignal("");
   const create = createComment.use();
   const guests = getAllGuests.use();
+  rateLimitAciton.use();
 
   useTask$(({ track }) => {
     track(() => create.value);
