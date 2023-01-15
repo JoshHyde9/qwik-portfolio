@@ -3,6 +3,8 @@ lockfileVersion: 5.4
 specifiers:
   '@builder.io/qwik': 0.16.2
   '@builder.io/qwik-city': 0.1.0-beta9
+  '@fontsource/lato': ^4.5.10
+  '@fontsource/mulish': ^4.5.13
   '@planetscale/database': ^1.5.0
   '@prisma/client': ^4.8.1
   '@types/eslint': 8.4.10
@@ -34,6 +36,8 @@ specifiers:
   zod: ^3.20.2
 
 dependencies:
+  '@fontsource/lato': 4.5.10
+  '@fontsource/mulish': 4.5.13
   '@planetscale/database': 1.5.0
   '@prisma/client': 4.8.1_prisma@4.8.1
   '@upstash/ratelimit': 0.1.5_@upstash+redis@1.19.1
@@ -333,6 +337,14 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /@fontsource/lato/4.5.10:
+    resolution: {integrity: sha512-2hYR6r661Cq9B8zugtu6yxuOKqrVhAgfOSaPSq8XoxbC4ebsl0KOTy/vPoP+9U7JuQVLfrmikirW4a9Z0nDUug==}
+    dev: false
+
+  /@fontsource/mulish/4.5.13:
+    resolution: {integrity: sha512-uJ4NzvEZSCZnrKU0Xvk6Qf0WFMRnyCwslLOtHIao3vh2+W1llbaZy4+PiR6mcB2Y62dPG2HvZPN0NnKfDaFSbA==}
+    dev: false
 
   /@humanwhocodes/config-array/0.11.8:
     resolution: {integrity: sha512-UybHIJzJnR5Qc/MsD9Kr+RpO2h+/P1GhOwdiLPXK5TWk5sgTdu88bTD9UP+CKbPPh5Rni1u0GjAdYQLemG8g+g==}

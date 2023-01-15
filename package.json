@@ -46,6 +46,8 @@
     "vite-tsconfig-paths": "3.5.0"
   },
   "dependencies": {
+    "@fontsource/lato": "^4.5.10",
+    "@fontsource/mulish": "^4.5.13",
     "@planetscale/database": "^1.5.0",
     "@prisma/client": "^4.8.1",
     "@upstash/ratelimit": "^0.1.5",
