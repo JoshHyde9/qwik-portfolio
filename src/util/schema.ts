@@ -4,11 +4,13 @@ export const createGuest = z.object({
   username: z
     .string()
     .min(1, { message: "Name must not be empty" })
-    .max(50, { message: "Username has to be 50 characters or less." }),
+    .max(50, { message: "Username has to be 50 characters or less." })
+    .trim(),
   comment: z
     .string()
     .min(1, { message: "Comment must not be empty" })
-    .max(256, { message: "Comment can not be more than 256 characters" }),
+    .max(256, { message: "Comment can not be more than 256 characters" })
+    .trim(),
 });
 
 export type CreateGuest = z.infer<typeof createGuest>;
